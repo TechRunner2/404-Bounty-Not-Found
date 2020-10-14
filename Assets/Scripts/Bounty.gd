@@ -21,7 +21,7 @@ var heading = 0
 var change_dir = true
 export (PackedScene) var weapon
 
-signal death
+signal Death
 
 
 func _process(delta):
@@ -58,7 +58,7 @@ func take_damage(amount):
 	health -= amount
 	if health <= 0:
 		queue_free()
-		emit_signal("Death", true)
+		emit_signal("Death")
 
 func _on_Shoot_timeout():
 	can_fire = true
