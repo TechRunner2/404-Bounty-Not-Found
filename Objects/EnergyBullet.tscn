@@ -7,6 +7,7 @@
 radius = 8.25095
 
 [node name="EnergyBullet" type="KinematicBody2D"]
+z_index = 1
 script = ExtResource( 2 )
 speed = 1000
 
