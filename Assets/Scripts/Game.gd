@@ -1,14 +1,10 @@
 extends Node2D
 
-
-
-export var quadrant_width = 1000
-export var quadrant_height = 1000
-var current_quad_location
+var current_pos = Vector2()
+export (Vector2) var quad_dimension = Vector2(1000, 1000)
 var prev_locations = []
 
 var menu_open = false
-
 
 var last_star_gen = Vector2()
 
@@ -21,79 +17,70 @@ enum{
 }
 
 func _ready():
-	current_quad_location = Vector2(0,0)
-	generate_quadrants(current_quad_location.x, current_quad_location.y, START)
+	current_pos = Vector2(0,0)
+	generate_all()
 	pass # Replace with function body.
-
+	
+func generate_all():
+	generate_quadrant(current_pos)
+	generate_up()
+	generate_down()
+	generate_left()
+	generate_right()
+	
 func _on_Player_death(dead):
 	get_tree().change_scene("res://Scenes/End Screen.tscn")
 	pass # Replace with function body.
 
-func generate_quadrants(x,y,exit_side):
-	match exit_side:
-		EXIT_LEFT:
-			#Top Left
-			generate_quadrant_section(x-quadrant_width, y+quadrant_height)
-			#Top Center
-			generate_quadrant_section(x-quadrant_width, y)
-			#Bottom Left
-			generate_quadrant_section(x-quadrant_width, y-quadrant_height)
-			#Set new location
-			current_quad_location = Vector2(current_quad_location.x - quadrant_width, current_quad_location.y)
-		EXIT_TOP:
-			#Top Left
-			generate_quadrant_section(x-quadrant_width, y+quadrant_height)
-			#Top Center
-			generate_quadrant_section(x, y+quadrant_height)
-			#Top Right
-			generate_quadrant_section(x+quadrant_width, y+quadrant_height)
-			#Set new location
-			current_quad_location = Vector2(current_quad_location.x, current_quad_location.y + quadrant_height)
-		EXIT_RIGHT:
-			#Top Right
-			generate_quadrant_section(x+quadrant_width, y+quadrant_height)
-			#Right
-			generate_quadrant_section(x+quadrant_width,y)
-			#Bottom Right
-			generate_quadrant_section(x+quadrant_width, y-quadrant_height)
-			current_quad_location = Vector2(current_quad_location.x + quadrant_width, current_quad_location.y)
-		EXIT_BOTTOM:
-			#Bottom Left
-			generate_quadrant_section(x-quadrant_width, y-quadrant_height)
-			#Bottom Center
-			generate_quadrant_section(x, y-quadrant_height)
-			#Bottom Right
-			generate_quadrant_section(x+quadrant_width, y-quadrant_height)
-			current_quad_location = Vector2(current_quad_location.x, current_quad_location.y - quadrant_height)
-		START:
-			#Top Left
-			generate_quadrant_section(x-quadrant_width, y+quadrant_height)
-			#Top Center
-			generate_quadrant_section(x, y+quadrant_height)
-			#Top Right
-			generate_quadrant_section(x+quadrant_width, y+quadrant_height)
-			#Left
-			generate_quadrant_section(x-quadrant_width, y)
-			#Center
-			generate_quadrant_section(x, y)
-			#Right
-			generate_quadrant_section(x+quadrant_width,y)
-			#Bottom Left
-			generate_quadrant_section(x-quadrant_width, y-quadrant_height)
-			#Bottom Center
-			generate_quadrant_section(x, y-quadrant_height)
-			#Bottom Right
-			generate_quadrant_section(x+quadrant_width, y-quadrant_height)
-	
+func generate_up():
+	var left = Vector2(current_pos.x - quad_dimension.x, current_pos.y - quad_dimension.y)
+	var center = Vector2(current_pos.x, current_pos.y - quad_dimension.y)
+	var right = Vector2(current_pos.x + quad_dimension.x, current_pos.y - quad_dimension.y)
+	generate_quadrant(left)
+	generate_quadrant(center)
+	generate_quadrant(right)
+	current_pos = center
+	pass
 
-func generate_quadrant_section(x,y):
-	if not Vector2(x,y) in prev_locations:
+func generate_down():
+	var left = Vector2(current_pos.x - quad_dimension.x, current_pos.y + quad_dimension.y)
+	var center = Vector2(current_pos.x, current_pos.y + quad_dimension.y)
+	var right = Vector2(current_pos.x + quad_dimension.x, current_pos.y + quad_dimension.y)
+	generate_quadrant(left)
+	generate_quadrant(center)
+	generate_quadrant(right)
+	current_pos = center
+	pass
+	
+func generate_left():
+	var top = Vector2(current_pos.x - quad_dimension.x, current_pos.y - quad_dimension.y)
+	var left = Vector2(current_pos.x - quad_dimension.x, current_pos.y)
+	var bottom = Vector2(current_pos.x - quad_dimension.x, current_pos.y + quad_dimension.y)
+	generate_quadrant(top)
+	generate_quadrant(left)
+	generate_quadrant(bottom)
+	current_pos = left
+	pass
+
+func generate_right():
+	var top = Vector2(current_pos.x + quad_dimension.x, current_pos.y - quad_dimension.y)
+	var right = Vector2(current_pos.x + quad_dimension.x, current_pos.y)
+	var bottom = Vector2(current_pos.x + quad_dimension.x, current_pos.y + quad_dimension.y)
+	generate_quadrant(top)
+	generate_quadrant(right)
+	generate_quadrant(bottom)
+	current_pos = right
+	pass
+	
+func generate_quadrant(pos):
+	if not pos in prev_locations:
 		#Generate Stars
-		$Stars.generate_stars(x,y,quadrant_width, quadrant_height)
+		$Stars.generate(pos, quad_dimension)
 		#Generate Asteroids
-		$Asteroids.generate(x,y,quadrant_width, quadrant_height)
+		$Asteroids.generate(pos, quad_dimension)
 		#Generate Planets
-		prev_locations.append(Vector2(x,y))
+		#Add position to previous generation locations
+		prev_locations.append(pos)
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -102,18 +89,17 @@ func _process(delta):
 		
 	var pos = $Player.position
 	#Player Exits Current Quadrant to right
-	if pos.x >= current_quad_location.x + quadrant_width:
-		generate_quadrants(current_quad_location.x + quadrant_width, current_quad_location.y, EXIT_RIGHT)
+	if pos.x >= current_pos.x + quad_dimension.x:
+		generate_right()
 	#Player Exits quad to left
-	if pos.x <= current_quad_location.x - quadrant_width:
-		generate_quadrants(current_quad_location.x - quadrant_width, current_quad_location.y, EXIT_LEFT)
-		current_quad_location.x = current_quad_location.x - quadrant_width
+	if pos.x <= current_pos.x - quad_dimension.x:
+		generate_left()
 	#Player Exits quad to up
-	if pos.y >= current_quad_location.y + quadrant_height:
-		generate_quadrants(current_quad_location.x, current_quad_location.y + quadrant_height, EXIT_TOP)
+	if pos.y >= current_pos.y - quad_dimension.y:
+		generate_up()
 	#Player Exits to bottom
-	if pos.y <= current_quad_location.y - quadrant_height:
-		generate_quadrants(current_quad_location.x, current_quad_location.y - quadrant_height, EXIT_BOTTOM)
+	if pos.y <= current_pos.y + quad_dimension.y:
+		generate_down()
 
 
 	pass
