@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Scripts/Planets.gd" type="Script" id=9]
 [ext_resource path="res://Objects/Bounty.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/GameUI.tscn" type="PackedScene" id=12]
 
 [node name="Game" type="Node2D"]
 position = Vector2( 0, 2.82843 )
@@ -37,14 +38,23 @@ script = ExtResource( 9 )
 position = Vector2( 280, 254 )
 
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 531.779, 188.901 )
 current = true
 script = ExtResource( 8 )
+
+[node name="GameUI" parent="Camera" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
 
 [node name="Bounty" parent="." instance=ExtResource( 10 )]
 position = Vector2( 896.696, 540.443 )
 
 [node name="Planet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 565.77, 294.369 )
+position = Vector2( 326.073, 424.536 )
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 [connection signal="pos_update" from="Player" to="Bounty" method="_on_Player_pos_update"]
 [connection signal="pos_update" from="Player" to="Camera" method="_on_Player_pos_update"]
