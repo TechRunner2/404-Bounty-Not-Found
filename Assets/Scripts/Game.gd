@@ -26,7 +26,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_Player_death(dead):
-	get_tree().change_scene("res://End Screen.tscn")
+	get_tree().change_scene("res://Scenes/End Screen.tscn")
 	pass # Replace with function body.
 
 func generate_quadrants(x,y,exit_side):
