@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var health = 5
+export var health = 10
 export var max_speed = 2
 export var damage = 2
 var direction = Vector2()
