@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Scripts/Laser.gd" type="Script" id=1]
+[ext_resource path="res://Objects/EnergyBullet.tscn" type="PackedScene" id=2]
+
+[node name="Laser" type="Position2D"]
+position = Vector2( 34.5781, -0.25 )
+script = ExtResource( 1 )
+Projectile = ExtResource( 2 )

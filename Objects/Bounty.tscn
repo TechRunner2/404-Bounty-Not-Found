@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Scripts/Bounty.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/SpaceShip-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Objects/EnergyBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Laser.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.1875
+height = 7.0
+
+[node name="Bounty" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
+script = ExtResource( 1 )
+speed = 400
+weapon = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 2 )
+hframes = 6
+
+[node name="Laser" parent="." instance=ExtResource( 4 )]
+
+[node name="Shoot" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Wander" type="Timer" parent="."]
+[connection signal="timeout" from="Shoot" to="." method="_on_Shoot_timeout"]
+[connection signal="timeout" from="Wander" to="." method="_on_Wander_timeout"]
