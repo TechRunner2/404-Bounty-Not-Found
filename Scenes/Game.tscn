@@ -46,5 +46,5 @@ position = Vector2( 896.696, 540.443 )
 [node name="Planet" parent="." instance=ExtResource( 11 )]
 position = Vector2( 565.77, 294.369 )
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
-[connection signal="pos_update" from="Player" to="Camera" method="_on_Player_pos_update"]
 [connection signal="pos_update" from="Player" to="Bounty" method="_on_Player_pos_update"]
+[connection signal="pos_update" from="Player" to="Camera" method="_on_Player_pos_update"]
