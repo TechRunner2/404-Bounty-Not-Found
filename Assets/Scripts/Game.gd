@@ -20,14 +20,14 @@ func _ready():
 	current_pos = Vector2(0,0)
 	generate_all()
 	pass # Replace with function body.
-	
+
 func generate_all():
 	generate_quadrant(current_pos)
 	generate_up()
 	generate_down()
 	generate_left()
 	generate_right()
-	
+
 func _on_Player_death(dead):
 	get_tree().change_scene("res://Scenes/End Screen.tscn")
 	pass # Replace with function body.
@@ -51,7 +51,7 @@ func generate_down():
 	generate_quadrant(right)
 	current_pos = center
 	pass
-	
+
 func generate_left():
 	var top = Vector2(current_pos.x - quad_dimension.x, current_pos.y - quad_dimension.y)
 	var left = Vector2(current_pos.x - quad_dimension.x, current_pos.y)
@@ -71,7 +71,7 @@ func generate_right():
 	generate_quadrant(bottom)
 	current_pos = right
 	pass
-	
+
 func generate_quadrant(pos):
 	if not pos in prev_locations:
 		#Generate Stars
@@ -86,20 +86,21 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		menu_open != menu_open
 		get_tree().paused = menu_open
-		
+
 	var pos = $Player.position
 	#Player Exits Current Quadrant to right
-	if pos.x >= current_pos.x + quad_dimension.x:
-		generate_right()
+	#if pos.x >= current_pos.x + quad_dimension.x:
+		#generate_right()
 	#Player Exits quad to left
-	if pos.x <= current_pos.x - quad_dimension.x:
-		generate_left()
+	#if pos.x <= current_pos.x - quad_dimension.x:
+		#generate_left()
+		
 	#Player Exits quad to up
-	if pos.y >= current_pos.y - quad_dimension.y:
-		generate_up()
+	#if pos.y >= current_pos.y - quad_dimension.y:
+		#generate_up()
 	#Player Exits to bottom
-	if pos.y <= current_pos.y + quad_dimension.y:
-		generate_down()
+	#if pos.y <= current_pos.y + quad_dimension.y:
+		#generate_down()
 
 
 	pass

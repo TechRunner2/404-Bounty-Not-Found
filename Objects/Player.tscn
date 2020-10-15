@@ -25,10 +25,7 @@ tracks/0/keys = {
 [sub_resource type="CapsuleShape2D" id=2]
 height = 18.0
 
-[node name="Player" type="KinematicBody2D" groups=[
-"Player",
-]]
-z_index = 1
+[node name="Player" type="KinematicBody2D"]
 collision_mask = 14
 script = ExtResource( 1 )
 speed = 500
