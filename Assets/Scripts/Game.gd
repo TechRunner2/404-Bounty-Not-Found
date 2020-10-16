@@ -75,7 +75,7 @@ func generate_left():
 		prev_locations.append(top)
 	if not left in prev_locations:
 		generate_quadrant(left)
-		prev_locations.append(top)
+		prev_locations.append(left)
 	if not bottom in prev_locations:
 		generate_quadrant(bottom)
 		prev_locations.append(bottom)
@@ -128,3 +128,13 @@ func _process(delta):
 		
 	pass
 
+
+
+func _on_Game_tree_entered():
+	#Clear Asteroids
+	for asteroid in $Asteroids.get_children():
+		asteroid.queue_free()
+	#Clear Stars
+	for star in $Stars.get_children():
+		star.queue_free()
+	pass # Replace with function body.
