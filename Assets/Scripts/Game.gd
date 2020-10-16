@@ -16,10 +16,11 @@ var center_right = Vector2(0, quad_dimension.y) *2
 var bottom_left = Vector2(-quad_dimension.x, quad_dimension.y) * 2
 var bottom_center = Vector2(0, quad_dimension.y) * 2 
 var bottom_right = Vector2(quad_dimension.x, quad_dimension.y) * 2
+
 func _ready():
 	current_pos = Vector2(0,0)
 	generate_all()
-	pass # Replace with function body.
+	pass 
 
 func generate_all():
 	generate_quadrant(current_pos)
@@ -30,7 +31,7 @@ func generate_all():
 
 func _on_Player_death(dead):
 	get_tree().change_scene("res://Scenes/End Screen.tscn")
-	pass # Replace with function body.
+	pass 
 
 func generate_up():
 	var left = Vector2(current_pos.x - quad_dimension.x, current_pos.y - quad_dimension.y)
@@ -103,7 +104,5 @@ func _process(delta):
 	#Player Exits to bottom
 	#if pos.y <= current_pos.y + quad_dimension.y:
 		#generate_down()
-
-
 	pass
 
