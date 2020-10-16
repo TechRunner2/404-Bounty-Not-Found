@@ -6,6 +6,16 @@ var prev_locations = []
 var last_star_gen = Vector2()
 var menu_open = false
 
+#Quad locations
+var top_left = Vector2(-quad_dimension.x, -quad_dimension.y) * 2
+var top_center = Vector2(0, -quad_dimension.y) * 2
+var top_right = Vector2(quad_dimension.x, -quad_dimension.y) *2
+var center_left = Vector2(-quad_dimension.x, 0) *2 
+var center = Vector2(0,0)
+var center_right = Vector2(0, quad_dimension.y) *2 
+var bottom_left = Vector2(-quad_dimension.x, quad_dimension.y) * 2
+var bottom_center = Vector2(0, quad_dimension.y) * 2 
+var bottom_right = Vector2(quad_dimension.x, quad_dimension.y) * 2
 func _ready():
 	current_pos = Vector2(0,0)
 	generate_all()
