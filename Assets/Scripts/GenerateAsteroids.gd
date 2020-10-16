@@ -8,8 +8,8 @@ export (PackedScene) var Obj
 
 func generate(pos, dim):
 	for i in range(amount):
-		var nx = rand_range(pos.x-(dim.x/2), pos.x+(dim.x/2))
-		var ny = rand_range(pos.y-(dim.y/2), pos.y+(dim.y/2))
+		var nx = rand_range(-pos.x-(dim.x/2), pos.x+(dim.x/2))
+		var ny = rand_range(-pos.y-(dim.y/2), pos.y+(dim.y/2))
 		var rot = rand_range(0, 360)
 		var size = rand_range(min_scale, max_scale)
 		var a = Obj.instance()
