@@ -3,18 +3,8 @@ extends Node2D
 var current_pos = Vector2()
 export (Vector2) var quad_dimension = Vector2(1000, 1000)
 var prev_locations = []
-
-var menu_open = false
-
 var last_star_gen = Vector2()
-
-enum{
-	EXIT_LEFT,
-	EXIT_RIGHT,
-	EXIT_TOP,
-	EXIT_BOTTOM,
-	START
-}
+var menu_open = false
 
 func _ready():
 	current_pos = Vector2(0,0)
@@ -53,6 +43,7 @@ func generate_down():
 	pass
 
 func generate_left():
+	var new_x = current_pos.x - (quad_dimension.x * 2)
 	var top = Vector2(current_pos.x - quad_dimension.x, current_pos.y - quad_dimension.y)
 	var left = Vector2(current_pos.x - quad_dimension.x, current_pos.y)
 	var bottom = Vector2(current_pos.x - quad_dimension.x, current_pos.y + quad_dimension.y)
@@ -63,9 +54,10 @@ func generate_left():
 	pass
 
 func generate_right():
-	var top = Vector2(current_pos.x + quad_dimension.x, current_pos.y - quad_dimension.y)
-	var right = Vector2(current_pos.x + quad_dimension.x, current_pos.y)
-	var bottom = Vector2(current_pos.x + quad_dimension.x, current_pos.y + quad_dimension.y)
+	var new_x = current_pos.x + (quad_dimension.x * 2)
+	var top = Vector2(new_x, current_pos.y - quad_dimension.y)
+	var right = Vector2(new_x, current_pos.y)
+	var bottom = Vector2(new_x, current_pos.y + quad_dimension.y)
 	generate_quadrant(top)
 	generate_quadrant(right)
 	generate_quadrant(bottom)
