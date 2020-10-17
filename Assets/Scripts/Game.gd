@@ -4,6 +4,7 @@ var current_pos = Vector2()
 export (Vector2) var map_size = Vector2(50000,50000)
 export var asteroid_count = 5
 export var star_count = 10
+export var planet_count = 50
 var prev_locations = []
 var last_star_gen = Vector2()
 var menu_open = false
