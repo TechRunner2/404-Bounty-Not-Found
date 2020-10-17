@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
@@ -9,34 +9,42 @@
 [ext_resource path="res://Objects/SmallStar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Scripts/Camera.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Scripts/Planets.gd" type="Script" id=9]
+[ext_resource path="res://Objects/Bounty.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/LoadingScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Enamies.gd" type="Script" id=13]
+[ext_resource path="res://Scenes/GameUI.tscn" type="PackedScene" id=14]
 
 [node name="Game" type="Node2D"]
 position = Vector2( 0, 2.82843 )
 script = ExtResource( 1 )
-quad_dimension = Vector2( 1024, 600 )
-map_size = Vector2( 20, 20 )
+map_size = Vector2( 20000, 20000 )
+asteroid_count = 1000
+star_count = 10000
 
 [node name="Stars" type="Node2D" parent="."]
 script = ExtResource( 5 )
 stars = [ ExtResource( 7 ), ExtResource( 6 ) ]
-quanity = 10
 
 [node name="Asteroids" type="Node2D" parent="."]
 script = ExtResource( 4 )
 min_scale = 0.25
 max_scale = 1
-Obj = ExtResource( 3 )
+asteroid_scene = ExtResource( 3 )
 
 [node name="Planets" type="Node2D" parent="."]
 script = ExtResource( 9 )
+planet_scene = ExtResource( 11 )
 
 [node name="Enamies" type="Node2D" parent="."]
+script = ExtResource( 13 )
+bounty_scene = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 speed = 1000
 
 [node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
 current = true
 script = ExtResource( 8 )
 
@@ -54,3 +62,4 @@ visible = false
 [connection signal="visibility_changed" from="." to="." method="_on_Game_visibility_changed"]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 [connection signal="pos_update" from="Player" to="Camera" method="_on_Player_pos_update"]
+[connection signal="scan_sucessful" from="Player" to="Enamies" method="_on_Player_scan_sucessful"]
