@@ -1,10 +1,8 @@
 extends Node
 
 export var stars = Array()
-export var quanity = 20
 
-
-func generate(pos, dim):
+func generate(pos, dim, quanity):
 	#Create New Children
 	for i in range(quanity):
 		var nx = rand_range(-pos.x-(dim.x/2), pos.x+(dim.x/2))
