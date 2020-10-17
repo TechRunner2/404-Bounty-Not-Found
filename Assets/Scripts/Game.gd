@@ -12,7 +12,11 @@ var menu_open = false
 
 
 func _ready():
-	generate_map()
+	$LoadingScreen.visible = true
+	get_tree().paused = false
+	generate_map(Vector2(0,0))
+	$LoadingScreen.visible = false
+	get_tree().paused = false
 	pass 
 
 func _on_Player_death(dead):
