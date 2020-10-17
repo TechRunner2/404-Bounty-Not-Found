@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objects/SmallStar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scripts/GenerateAsteroids.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Scripts/Stars.gd" type="Script" id=3]
-[ext_resource path="res://Objects/Asteroid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/LargeStar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Fonts/PressStart2P-vaV7.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Assets/Scripts/Main Menu.gd" type="Script" id=7]
@@ -35,12 +34,9 @@ __meta__ = {
 [node name="Stars" type="Node" parent="."]
 script = ExtResource( 3 )
 stars = [ ExtResource( 1 ), ExtResource( 5 ) ]
-quanity = 30
 
 [node name="Asteroids" type="Node" parent="."]
 script = ExtResource( 2 )
-amount = 20
-Obj = ExtResource( 4 )
 
 [node name="Play" type="Button" parent="."]
 anchor_left = 0.375977
