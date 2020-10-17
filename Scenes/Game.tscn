@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
@@ -11,16 +11,18 @@
 [ext_resource path="res://Assets/Scripts/Planets.gd" type="Script" id=9]
 [ext_resource path="res://Objects/Bounty.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/LoadingScreen.tscn" type="PackedScene" id=12]
 
 [node name="Game" type="Node2D"]
 position = Vector2( 0, 2.82843 )
 script = ExtResource( 1 )
 quad_dimension = Vector2( 1024, 600 )
+map_size = Vector2( 20, 20 )
 
 [node name="Stars" type="Node" parent="."]
 script = ExtResource( 5 )
 stars = [ ExtResource( 7 ), ExtResource( 6 ) ]
-quanity = 15
+quanity = 10
 
 [node name="Asteroids" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -34,6 +36,7 @@ script = ExtResource( 9 )
 [node name="Enamies" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+speed = 1000
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
@@ -44,7 +47,10 @@ position = Vector2( 896.696, 540.443 )
 
 [node name="Planet" parent="." instance=ExtResource( 11 )]
 position = Vector2( 565.77, 294.369 )
+
+[node name="LoadingScreen" parent="." instance=ExtResource( 12 )]
+visible = false
 [connection signal="tree_entered" from="." to="." method="_on_Game_tree_entered"]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
-[connection signal="pos_update" from="Player" to="Bounty" method="_on_Player_pos_update"]
 [connection signal="pos_update" from="Player" to="Camera" method="_on_Player_pos_update"]
+[connection signal="pos_update" from="Player" to="Bounty" method="_on_Player_pos_update"]
