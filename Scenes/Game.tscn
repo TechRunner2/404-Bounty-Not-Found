@@ -44,7 +44,6 @@ bounty_scene = ExtResource( 10 )
 speed = 1000
 
 [node name="Camera" type="Camera2D" parent="."]
-anchor_mode = 0
 current = true
 script = ExtResource( 8 )
 
