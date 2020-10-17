@@ -3,6 +3,7 @@ extends Node2D
 var current_pos = Vector2()
 export (Vector2) var quad_dimension = Vector2(1000, 1000)
 export (Vector2) var map_size = Vector2(50,50)
+export var asteroid_count = 5
 var prev_locations = []
 var last_star_gen = Vector2()
 var menu_open = false

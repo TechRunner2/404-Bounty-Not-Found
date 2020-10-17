@@ -1,7 +1,6 @@
 extends Node
 
 
-export var amount = 5
 export var min_scale = 0.5
 export var max_scale = 2
 export (PackedScene) var asteroid_scene
