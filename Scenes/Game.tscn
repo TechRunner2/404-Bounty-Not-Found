@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
@@ -9,8 +9,6 @@
 [ext_resource path="res://Objects/SmallStar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Scripts/Camera.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Scripts/Planets.gd" type="Script" id=9]
-[ext_resource path="res://Objects/Bounty.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/LoadingScreen.tscn" type="PackedScene" id=12]
 
 [node name="Game" type="Node2D"]
@@ -19,21 +17,21 @@ script = ExtResource( 1 )
 quad_dimension = Vector2( 1024, 600 )
 map_size = Vector2( 20, 20 )
 
-[node name="Stars" type="Node" parent="."]
+[node name="Stars" type="Node2D" parent="."]
 script = ExtResource( 5 )
 stars = [ ExtResource( 7 ), ExtResource( 6 ) ]
 quanity = 10
 
-[node name="Asteroids" type="Node" parent="."]
+[node name="Asteroids" type="Node2D" parent="."]
 script = ExtResource( 4 )
 min_scale = 0.25
 max_scale = 1
 Obj = ExtResource( 3 )
 
-[node name="Planets" type="Node" parent="."]
+[node name="Planets" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
-[node name="Enamies" type="Node" parent="."]
+[node name="Enamies" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 speed = 1000
@@ -42,15 +40,8 @@ speed = 1000
 current = true
 script = ExtResource( 8 )
 
-[node name="Bounty" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896.696, 540.443 )
-
-[node name="Planet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 565.77, 294.369 )
-
 [node name="LoadingScreen" parent="." instance=ExtResource( 12 )]
-visible = false
 [connection signal="tree_entered" from="." to="." method="_on_Game_tree_entered"]
+[connection signal="visibility_changed" from="." to="." method="_on_Game_visibility_changed"]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 [connection signal="pos_update" from="Player" to="Camera" method="_on_Player_pos_update"]
-[connection signal="pos_update" from="Player" to="Bounty" method="_on_Player_pos_update"]
