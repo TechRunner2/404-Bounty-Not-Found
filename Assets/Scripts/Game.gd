@@ -26,21 +26,14 @@ func _on_Player_death(dead):
 	get_tree().change_scene("res://Scenes/End Screen.tscn")
 	pass 
 
-func generate_map():
-	var map_width = map_size * quad_dimension
-	var start_pos = -map_width/2 + quad_dimension
-	for y in range(map_size.y):
-		var center_y = start_pos.y + (y * quad_dimension.y)
-		for x in range(map_size.x):
-			var center_x = start_pos.x + (x * quad_dimension.x)
-			generate_quadrant(Vector2(center_x, center_y))
 
-func generate_quadrant(pos):
+func generate_map(pos):
 	#Generate Stars
-	$Stars.generate(pos, quad_dimension)
+	$Stars.generate(pos, map_size, star_count)
 	#Generate Asteroids
-	$Asteroids.generate(pos, quad_dimension)
+	$Asteroids.generate(pos, map_size, asteroid_count)
 	#Generate Planets
+	$Planets.generate(pos, map_size, planet_count)
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
