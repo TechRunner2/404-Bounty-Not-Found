@@ -24,6 +24,7 @@ var score = 0
 
 signal death(dead)
 signal pos_update(pos)
+signal scan_sucessful
 
 
 func shoot():
