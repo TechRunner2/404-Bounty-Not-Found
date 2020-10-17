@@ -59,3 +59,8 @@ func _on_Game_tree_entered():
 	for star in $Stars.get_children():
 		star.queue_free()
 	pass # Replace with function body.
+
+
+func _on_Game_visibility_changed():
+	
+	pass # Replace with function body.
