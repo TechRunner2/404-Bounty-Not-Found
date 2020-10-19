@@ -12,6 +12,7 @@ export var speed = 500
 export var turn_speed = 0.05
 export var health = 10
 export var wander_area = 200
+export var min_distance = 100
 var health_threshold = health * .25
 var player_pos
 var state = ATTACKING
@@ -24,18 +25,22 @@ export (PackedScene) var weapon
 signal Death
 
 
-func _process(delta):
+func _fixed_process(delta):
+	var player_pos = get_node("Player").position
 	match state:
 		IDLE:
+			
 			pass
 
 		ATTACKING:
+			
 			if can_fire == true:
 				$Laser.shoot(rotation)
 				$Shoot.start()
 				can_fire = false
-			var direction = Vector2(speed, 0).rotated(rotation)
-			var collisions = move_and_slide(direction)
+			if position.distance_to(player_pos) > min_distance:
+				var direction = Vector2(speed, 0).rotated(rotation)
+				var collisions = move_and_slide(direction)
 			pass
 
 		FLEEING:
