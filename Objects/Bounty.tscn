@@ -13,6 +13,10 @@ height = 7.0
 scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
 speed = 400
+turn_speed = null
+health = null
+wander_area = null
+min_distance = null
 weapon = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
