@@ -22,6 +22,9 @@ config/icon="res://Assets/BountyNotFoundLogo.png"
 
 Steering="*res://Assets/Autoload/steering.gd"
 
+[display]
+
+window/size/resizable=false
 
 [gui]
 
