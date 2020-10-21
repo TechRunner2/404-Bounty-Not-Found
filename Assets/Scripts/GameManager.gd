@@ -5,6 +5,8 @@ var game = preload("res://Assets/Scripts/Game.gd")
 var end = preload("res://Scenes/End Screen.tscn")
 export var level = 0
 
+var score = 0
+
 func _ready():
 	$Music.play()
 	add_child(menu)
