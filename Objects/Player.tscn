@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/SpaceShip-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Assets/SFX/death.wav" type="AudioStream" id=3]
 [ext_resource path="res://Objects/Laser.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/SFX/hurt.wav" type="AudioStream" id=5]
+
+[sub_resource type="CapsuleShape2D" id=2]
+height = 18.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
@@ -38,15 +42,15 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=2]
-height = 18.0
-
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 14
 script = ExtResource( 1 )
-speed = 500
-Bullet = ExtResource( 3 )
+speed = 200
 health = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -7.5, -0.25 )
@@ -54,20 +58,16 @@ rotation = 1.5708
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 6
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Idle = SubResource( 3 )
 anims/Moving = SubResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource( 2 )
-
-[node name="Shoot Speed" type="Timer" parent="."]
-wait_time = 0.25
-
-[node name="Attack Sound" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Laser" parent="." instance=ExtResource( 4 )]
 position = Vector2( 53.5781, 0 )
-[connection signal="timeout" from="Shoot Speed" to="." method="_on_Shoot_Speed_timeout"]
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
