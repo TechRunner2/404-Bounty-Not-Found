@@ -1,21 +1,6 @@
 extends RigidBody2D
 
-
 var been_scanned = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-
-	pass # Replace with function body.
-
-func _process(delta):
-	#if $ScanArea.is_colliding():
-	#	print("Collision!")
-	pass
-
-func _physics_process(delta):
-	pass
-
 
 func _on_ScanArea_body_entered(body):
 	if body.is_in_group("Asteroid"):
@@ -25,7 +10,6 @@ func _on_ScanArea_body_entered(body):
 			body.can_scan = true
 			print("Can Scan")
 	pass # Replace with function body.
-
 
 func _on_ScanArea_body_exited(body):
 	if body.is_in_group("Player"):
