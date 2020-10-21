@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="GameJam"
 run/main_scene="res://Scenes/Main Menu.tscn"
 config/icon="res://Assets/BountyNotFoundLogo.png"
+[autoload]
+
+Steering="*res://Assets/Autoload/steering.gd"
+
 
 [gui]
 
