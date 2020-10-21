@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Assets/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/SpaceShip-Sheet.png" type="Texture" id=2]
-[ext_resource path="res://Objects/EnergyBullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Laser.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/SFX/hurt.wav" type="AudioStream" id=5]
 
