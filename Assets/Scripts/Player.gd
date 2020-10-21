@@ -15,6 +15,7 @@ export var slowdown = 0.1
 var current_speed = 0
 export var rotation_speed = 3
 export var health = 5
+var map_size:Vector2
 var can_scan = false
 
 
