@@ -14,12 +14,8 @@ export var boost= 15
 export var slowdown = 0.1
 var current_speed = 0
 export var rotation_speed = 3
-export (PackedScene) var Bullet
 export var health = 5
-
 var can_scan = false
-var can_shoot = true
-var score = 0
 
 
 signal death(dead)
@@ -28,18 +24,12 @@ signal scan_sucessful
 
 
 func shoot():
-	if can_shoot:
-		$Laser.shoot(rotation)
-		can_shoot = false
-		$"Shoot Speed".start()
+	$Laser.shoot(rotation)
 	
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
 		emit_signal("death",true)
-
-func _ready():
-	pass # Replace with function body.
 
 func _physics_process(delta):
 	var collisions
@@ -97,8 +87,3 @@ func _process(delta):
 		shoot()
 	
 	pass
-
-
-func _on_Shoot_Speed_timeout():
-	can_shoot = true
-	pass # Replace with function body.
