@@ -39,14 +39,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		menu_open != menu_open
 		get_tree().paused = menu_open
-	if $Player.position.x >= map_size.x/2:
-		$Player.position.x = map_size.x/2
-	if $Player.position.x <= -map_size.x/2:
-		$Player.position.x = -map_size.x/2
-	if $Player.position.y <= -map_size.y/2:
-		$Player.position.y = -map_size.y/2
-	if $Player.position.y >= map_size.y/2:
-		$Player.position.y = map_size.y/2
 	pass
 
 

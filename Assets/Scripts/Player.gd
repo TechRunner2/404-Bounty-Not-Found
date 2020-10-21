@@ -69,6 +69,17 @@ func _physics_process(delta):
 				current_speed = new_speed
 				collisions = move_and_slide(direction)
 	emit_signal("pos_update", position)
+	emit_signal("pos_update", global_position)
+	
+	#Keep Player inside map
+	if position.x >= map_size.x/2:
+		position.x = map_size.x/2
+	if position.x <= -map_size.x/2:
+		position.x = -map_size.x/2
+	if position.y <= -map_size.y/2:
+		position.y = -map_size.y/2
+	if position.y >= map_size.y/2:
+		position.y = map_size.y/2
 	pass
 
 func _process(delta):
