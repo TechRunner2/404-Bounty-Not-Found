@@ -35,8 +35,7 @@ func _physics_process(delta):
 	var collisions
 	match state:
 		IDLE: 
-			$Sprite/AnimationPlayer.stop(true)
-			$Sprite.frame = 0
+			$Sprite/AnimationPlayer.play("Idle")
 			pass
 		MOVING:
 			var direction = Vector2(speed, 0).rotated(rotation)
