@@ -9,8 +9,6 @@ var prev_locations = []
 var last_star_gen = Vector2()
 var menu_open = false
 
-
-
 func _ready():
 	$LoadingScreen.visible = true
 	get_tree().paused = false
