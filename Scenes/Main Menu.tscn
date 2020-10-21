@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objects/SmallStar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Scripts/GenerateAsteroids.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Scripts/Stars.gd" type="Script" id=3]
+[ext_resource path="res://Objects/Asteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/LargeStar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Fonts/PressStart2P-vaV7.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Assets/Scripts/Main Menu.gd" type="Script" id=7]
@@ -31,12 +31,117 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Stars" type="Node" parent="."]
-script = ExtResource( 3 )
-stars = [ ExtResource( 1 ), ExtResource( 5 ) ]
+[node name="Container" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Asteroids" type="Node" parent="."]
-script = ExtResource( 2 )
+[node name="Planet" parent="Container" instance=ExtResource( 3 )]
+position = Vector2( 920.151, 433.699 )
+script = null
+
+[node name="Stars" type="Node2D" parent="Container"]
+
+[node name="SmallStar" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 193, 454 )
+script = null
+
+[node name="SmallStar2" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 133, 377 )
+script = null
+
+[node name="SmallStar3" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 509, 547 )
+script = null
+
+[node name="SmallStar4" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 361, 508 )
+script = null
+
+[node name="SmallStar5" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 885, 99 )
+script = null
+
+[node name="SmallStar6" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 792, 384 )
+script = null
+
+[node name="SmallStar7" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 770, 505 )
+script = null
+
+[node name="SmallStar8" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 635, 341 )
+script = null
+
+[node name="SmallStar9" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 222, 193 )
+script = null
+
+[node name="SmallStar10" parent="Container/Stars" instance=ExtResource( 1 )]
+position = Vector2( 673, 28 )
+script = null
+
+[node name="LargeStar" parent="Container/Stars" instance=ExtResource( 5 )]
+position = Vector2( 285, 314 )
+script = null
+
+[node name="LargeStar2" parent="Container/Stars" instance=ExtResource( 5 )]
+position = Vector2( 886, 522 )
+script = null
+
+[node name="LargeStar3" parent="Container/Stars" instance=ExtResource( 5 )]
+position = Vector2( 898, 252 )
+script = null
+
+[node name="LargeStar4" parent="Container/Stars" instance=ExtResource( 5 )]
+position = Vector2( 110, 109 )
+script = null
+
+[node name="LargeStar5" parent="Container/Stars" instance=ExtResource( 5 )]
+position = Vector2( 661, 518 )
+script = null
+
+[node name="LargeStar6" parent="Container/Stars" instance=ExtResource( 5 )]
+position = Vector2( 634, 205 )
+script = null
+
+[node name="LargeStar7" parent="Container/Stars" instance=ExtResource( 5 )]
+position = Vector2( 363, 40 )
+script = null
+
+[node name="LargeStar8" parent="Container/Stars" instance=ExtResource( 5 )]
+position = Vector2( 69, 572 )
+script = null
+
+[node name="Asteroids" type="Node2D" parent="Container"]
+
+[node name="Asteroid" parent="Container/Asteroids" instance=ExtResource( 2 )]
+position = Vector2( 78, 148 )
+script = null
+
+[node name="Asteroid2" parent="Container/Asteroids" instance=ExtResource( 2 )]
+position = Vector2( 184.327, 259.247 )
+script = null
+
+[node name="Asteroid3" parent="Container/Asteroids" instance=ExtResource( 2 )]
+position = Vector2( 677.553, 439.645 )
+script = null
+
+[node name="Asteroid4" parent="Container/Asteroids" instance=ExtResource( 2 )]
+position = Vector2( 237.546, 546.674 )
+script = null
+
+[node name="Asteroid5" parent="Container/Asteroids" instance=ExtResource( 2 )]
+position = Vector2( 930.854, 170.885 )
+script = null
+
+[node name="Asteroid6" parent="Container/Asteroids" instance=ExtResource( 2 )]
+position = Vector2( 767.932, 55.5316 )
+script = null
 
 [node name="Play" type="Button" parent="."]
 anchor_left = 0.375977

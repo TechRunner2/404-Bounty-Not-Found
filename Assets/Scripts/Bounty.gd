@@ -33,14 +33,15 @@ func _fixed_process(delta):
 			pass
 
 		ATTACKING:
-			
+			var angle = position.angle_to(player_pos)
 			if can_fire == true:
+				rotation = angle
 				$Laser.shoot(rotation)
 				$Shoot.start()
 				can_fire = false
 			if position.distance_to(player_pos) > min_distance:
 				var direction = Vector2(speed, 0).rotated(rotation)
-				var collisions = move_and_slide(direction)
+				#var collisions = move_and_slide(direction)
 			pass
 
 		FLEEING:
@@ -64,6 +65,16 @@ func take_damage(amount):
 	if health <= 0:
 		queue_free()
 		emit_signal("Death")
+
+
+func turn(player):
+	var global_pos = global_transform.origin
+	var player_pos = player.global_transform.origin
+	var rotation_speed = 0.01
+	var wtransform = global_transform.looking_at(Vector3(player_pos.x,global_pos.y,player_pos.z),Vector3(0,1,0))
+	var wrotation = Quat(global_transform.basis).slerp(Quat(wtransform.basis), rotation_speed)
+
+	global_transform = Transform(Basis(wrotation), global_transform.origin)
 
 func _on_Shoot_timeout():
 	can_fire = true
