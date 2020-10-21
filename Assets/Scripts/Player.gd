@@ -29,7 +29,10 @@ func shoot():
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
+		$DeathSound.play()
 		emit_signal("death",true)
+	else:
+		$HurtSound.play()
 
 func _physics_process(delta):
 	var collisions
