@@ -9,7 +9,7 @@
 [ext_resource path="res://Objects/SmallStar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Scripts/Camera.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Scripts/Planets.gd" type="Script" id=9]
-[ext_resource path="res://Objects/Bounty.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/GreenGremlin.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Objects/Planet.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/LoadingScreen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Enamies.gd" type="Script" id=13]
@@ -58,8 +58,8 @@ margin_bottom = 300.0
 [node name="LoadingScreen" parent="." instance=ExtResource( 12 )]
 visible = false
 
-[node name="Bounty" parent="." instance=ExtResource( 10 )]
-position = Vector2( 154.449, 142.434 )
+[node name="Green Gremlin" parent="." instance=ExtResource( 10 )]
+position = Vector2( 235.538, 172.693 )
 [connection signal="tree_entered" from="." to="." method="_on_Game_tree_entered"]
 [connection signal="visibility_changed" from="." to="." method="_on_Game_visibility_changed"]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
