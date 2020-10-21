@@ -60,7 +60,6 @@ func _physics_process(delta):
 				var direction = Vector2(new_speed, 0).rotated(rotation)
 				current_speed = new_speed
 				collisions = move_and_slide(direction)
-	emit_signal("pos_update", position)
 	emit_signal("pos_update", global_position)
 	
 	#Keep Player inside map
