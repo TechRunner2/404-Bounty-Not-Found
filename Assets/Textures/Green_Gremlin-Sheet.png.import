@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Green_Bandit-Sheet.png-571ee130fae203adb37e79fe254dc646.stex"
+path="res://.import/Green_Gremlin-Sheet.png-0e9454c8e72ba6bc51ffa54bcc0792ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Green_Bandit-Sheet.png"
-dest_files=[ "res://.import/Green_Bandit-Sheet.png-571ee130fae203adb37e79fe254dc646.stex" ]
+source_file="res://Assets/Textures/Green_Gremlin-Sheet.png"
+dest_files=[ "res://.import/Green_Gremlin-Sheet.png-0e9454c8e72ba6bc51ffa54bcc0792ec.stex" ]
 
 [params]
 
