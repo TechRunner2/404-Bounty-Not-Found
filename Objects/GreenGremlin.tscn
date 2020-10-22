@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Scripts/Bounty.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Textures/Green_Bandit-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/Green_Gremlin-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://Components/Explosion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Laser.tscn" type="PackedScene" id=4]
 
@@ -27,7 +27,9 @@ tracks/0/keys = {
 [node name="Green Gremlin" type="KinematicBody2D"]
 scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
-speed = 200
+speed = 50
+mass = 1000
+state = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

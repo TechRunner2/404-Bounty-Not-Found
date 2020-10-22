@@ -15,6 +15,7 @@ func _ready():
 	generate_map(Vector2(0,0))
 	$LoadingScreen.visible = false
 	get_tree().paused = false
+	$Player/Music.play()
 	pass 
 
 func _on_Player_death(dead):

@@ -2,7 +2,12 @@ extends Position2D
 
 
 export (PackedScene) var Projectile
+export var shoot_speed:float = 1
 var can_shoot = true
+
+
+func _ready():
+	$Timer.wait_time = shoot_speed
 
 func shoot(rot):
 	if can_shoot:
