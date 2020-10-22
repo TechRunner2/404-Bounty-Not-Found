@@ -9,7 +9,7 @@ enum{
 }
 
 var state = IDLE
-export var speed = 10
+export var speed = 700
 export var boost= 15
 export var slowdown = 0.1
 var current_speed = 0
@@ -62,16 +62,6 @@ func _physics_process(delta):
 				current_speed = new_speed
 				collisions = move_and_slide(direction)
 	emit_signal("pos_update", global_position)
-	
-	#Keep Player inside map
-	if position.x >= map_size.x/2:
-		position.x = map_size.x/2
-	if position.x <= -map_size.x/2:
-		position.x = -map_size.x/2
-	if position.y <= -map_size.y/2:
-		position.y = -map_size.y/2
-	if position.y >= map_size.y/2:
-		position.y = map_size.y/2
 	pass
 
 func _process(delta):

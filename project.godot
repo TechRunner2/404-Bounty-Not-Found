@@ -15,10 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GameJam"
+config/name="404: Bounty Not Found"
 config/description="A 2D top-down space dogfight game where you fly from planet to planet looking for your bounty and ellimating them."
 run/main_scene="res://Scenes/Main Menu.tscn"
-boot_splash/image="res://Assets/CoverArt.jpg"
 config/icon="res://Assets/CoverArt.jpg"
 
 [autoload]

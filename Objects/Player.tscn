@@ -6,10 +6,10 @@
 [ext_resource path="res://Objects/Laser.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/SFX/hurt.wav" type="AudioStream" id=5]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 height = 18.0
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Idle"
 length = 0.1
 tracks/0/type = "value"
@@ -25,8 +25,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Moving"
+[sub_resource type="Animation" id=3]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -45,12 +44,12 @@ tracks/0/keys = {
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 14
 script = ExtResource( 1 )
-speed = 200
+speed = 600
 health = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -7.5, -0.25 )
@@ -60,8 +59,8 @@ texture = ExtResource( 2 )
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Idle = SubResource( 3 )
-anims/Moving = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Moving = SubResource( 3 )
 
 [node name="Laser" parent="." instance=ExtResource( 4 )]
 position = Vector2( 53.5781, 0 )

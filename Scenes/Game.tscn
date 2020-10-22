@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Scenes/LoadingScreen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Enamies.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/GameUI.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/Music.tscn" type="PackedScene" id=15]
 
 [node name="Game" type="Node2D"]
 position = Vector2( 0, 2.82843 )
@@ -42,6 +43,8 @@ bounty_scene = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
+[node name="Music" parent="Player" instance=ExtResource( 15 )]
+
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 8 )
@@ -56,9 +59,6 @@ margin_bottom = 300.0
 
 [node name="LoadingScreen" parent="." instance=ExtResource( 12 )]
 visible = false
-
-[node name="Green Gremlin" parent="." instance=ExtResource( 10 )]
-position = Vector2( 235.538, 172.693 )
 [connection signal="tree_entered" from="." to="." method="_on_Game_tree_entered"]
 [connection signal="visibility_changed" from="." to="." method="_on_Game_visibility_changed"]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
