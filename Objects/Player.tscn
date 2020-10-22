@@ -45,7 +45,6 @@ tracks/0/keys = {
 collision_mask = 14
 script = ExtResource( 1 )
 speed = 600
-health = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -71,3 +70,15 @@ stream = ExtResource( 5 )
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+margin_left = -22.0
+margin_top = -43.0
+margin_right = 28.0
+margin_bottom = -29.0
+max_value = 6.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

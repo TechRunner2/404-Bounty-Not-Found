@@ -14,10 +14,12 @@ export var boost= 15
 export var slowdown = 0.1
 var current_speed = 0
 export var rotation_speed = 3
-export var health = 5
+export var max_health = 10
+var health = max_health
 var map_size:Vector2
 var can_scan = false
-
+var scanning = false
+var progress = 0
 
 signal death(dead)
 signal pos_update(pos)
@@ -77,5 +79,19 @@ func _process(delta):
 		state = SLOWING
 	if Input.is_action_pressed("primary_fire"):
 		shoot()
+	if can_scan:
+		if Input.is_action_just_pressed("player_scan"):
+			scan()
+	if scanning:
+		$ProgressBar.value += delta
+		if $ProgressBar.value == $ProgressBar.max_value:
+			emit_signal("scan_sucessful")
+			scanning = false
+			$ProgressBar.visible = false
+			$ProgressBar.value = 0
+	pass
 	
+func scan():
+	scanning = true
+	$ProgressBar.visible = true
 	pass

@@ -59,6 +59,9 @@ margin_bottom = 300.0
 
 [node name="LoadingScreen" parent="." instance=ExtResource( 12 )]
 visible = false
+
+[node name="Green Gremlin" parent="." instance=ExtResource( 10 )]
+position = Vector2( 618.458, 556.492 )
 [connection signal="tree_entered" from="." to="." method="_on_Game_tree_entered"]
 [connection signal="visibility_changed" from="." to="." method="_on_Game_visibility_changed"]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
